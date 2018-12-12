@@ -3,7 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { HomeComponent } from './core/home/home.component';
-import { MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatIcon } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 
 const appRoutes: Routes = [
@@ -14,7 +14,8 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
+    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}),
+    MatIconModule
   ],
   exports: [RouterModule,
     MatToolbarModule,
