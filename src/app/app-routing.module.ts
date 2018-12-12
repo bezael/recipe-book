@@ -3,6 +3,8 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { HomeComponent } from './core/home/home.component';
+import { MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +16,14 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
   ],
-  exports: [RouterModule]
+  exports: [RouterModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatListModule
+    ]
 })
 export class AppRoutingModule {
 

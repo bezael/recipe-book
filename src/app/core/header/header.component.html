@@ -1,3 +1,32 @@
+<mat-toolbar color="secondary">
+  <mat-toolbar-row>
+      <a routerLink="/">Recipe Book</a>
+      <a routerLinkActive="active" routerLink="/recipes">Recipes</a>
+      <!-- This fills the remaining space of the current row -->
+      <span class="example-fill-remaining-space"></span>
+      <span>Right Aligned Text</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div fxFlex="25%">
+          <button mat-raised-button color="primary">
+              <b>Home</b>
+            </button>
+      </div>
+      <div fxFlex="25%">
+          <button mat-button>
+              <mat-icon svgIcon="navigation:ic_menu_24px"></mat-icon>
+            </button>
+      </div>
+      <h1 fxFlex="25%">Dashboard</h1>
+      <div fxFlex="25%">
+          <button mat-raised-button color="primary">
+              <b>Add App</b>
+            </button>
+      </div>
+   </mat-toolbar-row>
+  </mat-toolbar>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -7,7 +36,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
-        <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+        <li routerLinkActive="active">
+          <a routerLink="/shopping-list">Shopping List</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <ng-template [ngIf]="!(authState | async).authenticated">
@@ -15,16 +46,30 @@
           <li><a routerLink="/signin">Login</a></li>
         </ng-template>
 
-        <li><a
-          style="cursor: pointer;"
-          (click)="onLogout()"
-          *ngIf="(authState | async).authenticated">Logout</a></li>
+        <li>
+          <a
+            style="cursor: pointer;"
+            (click)="onLogout()"
+            *ngIf="(authState | async).authenticated"
+            >Logout</a
+          >
+        </li>
 
-        <li class="dropdown" appDropdown *ngIf="(authState | async).authenticated">
-          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+        <li
+          class="dropdown"
+          appDropdown
+          *ngIf="(authState | async).authenticated"
+        >
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button"
+            >Manage <span class="caret"></span
+          ></a>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
-            <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
+            <li>
+              <a style="cursor: pointer;" (click)="onSaveData()">Save Data</a>
+            </li>
+            <li>
+              <a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a>
+            </li>
           </ul>
         </li>
       </ul>
