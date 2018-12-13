@@ -1,21 +1,32 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <form (ngSubmit)="onSignin(f)" #f="ngForm">
-      <div class="form-group">
-        <label for="email">Mail</label>
-        <input type="email" id="email" name="email" ngModel class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          ngModel
-          class="form-control">
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign In</button>
-    </form>
-  </div>
-</div>
+<mat-card class="sign-in-card">
+  <mat-card-title color="primary" style="color: black">Login</mat-card-title>
+  <form (ngSubmit)="onSignin(f)" #f="ngForm" class="example-form">
+    <mat-form-field color="primary" class="example-full-width">
+      <input
+        matInput
+        placeholder="Your email"
+        type="email"
+        id="email"
+        name="email"
+        ngModel
+      />
+    </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="Your password"
+        type="password"
+        id="password"
+        name="password"
+        ngModel
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid">
+      Sign In
+    </button>
+    <button mat-raised-button color="secondary" style="margin-left: 5px;" (click)="handleBack()">
+        Back
+    </button>
+  </form>
+</mat-card>

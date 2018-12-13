@@ -22,6 +22,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   editMode = false;
   editedItem: Ingredient;
+  isFormVisible = false;
 
   constructor(private store: Store<fromApp.AppState>) { }
 
@@ -70,4 +71,11 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  showForm() {
+    this.isFormVisible = true;
+  }
+
+  closeForm() {
+    this.isFormVisible = false;
+  }
 }
