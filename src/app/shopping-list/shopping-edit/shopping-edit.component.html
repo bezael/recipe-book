@@ -1,26 +1,28 @@
-<mat-card style="background-color: white;">
-  <mat-card-actions align="end">
-
-    <mat-icon
-      style="color: #c2185b;"
+<mat-card-header fxLayout="row" class="shopping-list-header">
+    <mat-card-title style="color: black; width:100%;"
+      >My Shopping List
+      <span class="example-spacer"></span><mat-icon
+      style="color: #c2185b; cursor: pointer; float: right;"
       *ngIf="!isFormVisible"
       (click)="showForm()"
       >add_box</mat-icon
     >
 
     <mat-icon
-      style="color: #c2185b;"
+      style="color: #c2185b; cursor: pointer; float: right;"
       *ngIf="isFormVisible"
       (click)="closeForm()"
       >close</mat-icon
     >
-  </mat-card-actions>
+    </mat-card-title>
+</mat-card-header>
 
+<mat-card style="background-color: white;" *ngIf="isFormVisible"
+>
   <form
     (ngSubmit)="onSubmit(f)"
     #f="ngForm"
     class="example-form"
-    *ngIf="isFormVisible"
   >
     <mat-form-field color="primary" class="example-full-width">
       <input
