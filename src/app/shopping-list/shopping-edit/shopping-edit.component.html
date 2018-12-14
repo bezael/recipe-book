@@ -1,29 +1,22 @@
-<mat-card-header fxLayout="row" class="shopping-list-header">
-    <mat-card-title style="color: black; width:100%;"
-      >My Shopping List
-      <span class="example-spacer"></span><mat-icon
-      style="color: #c2185b; cursor: pointer; float: right;"
-      *ngIf="!isFormVisible"
-      (click)="showForm()"
+  <mat-card-title-group style="color: black; width:100%; margin-bottom: 5px;">
+    <span style="font-weight: bold">My Shopping List</span>
+    <span class="example-spacer"></span>
+    <mat-icon
+      style="color: #c2185b; cursor: pointer;"
+      *ngIf="!isFormVisible || editMode"
+      (click)="showAddForm()"
       >add_box</mat-icon
     >
-
     <mat-icon
-      style="color: #c2185b; cursor: pointer; float: right;"
+      style="color: #c2185b; cursor: pointer;"
       *ngIf="isFormVisible"
       (click)="closeForm()"
       >close</mat-icon
     >
-    </mat-card-title>
-</mat-card-header>
+  </mat-card-title-group>
 
-<mat-card style="background-color: white;" *ngIf="isFormVisible"
->
-  <form
-    (ngSubmit)="onSubmit(f)"
-    #f="ngForm"
-    class="example-form"
-  >
+<mat-card style="background-color: white;" [hidden]="!isFormVisible">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="example-form">
     <mat-form-field color="primary" class="example-full-width">
       <input
         matInput
@@ -49,12 +42,7 @@
       />
     </mat-form-field>
     <mat-card-actions>
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        [disabled]="!f.valid"
-      >
+      <button mat-raised-button color="primary" type="submit">
         {{ editMode ? 'Update' : 'Add' }}
       </button>
       <button
