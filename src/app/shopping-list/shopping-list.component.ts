@@ -64,6 +64,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   }
 
   onClearSelected() {
-
+    const idsToDelete = this.selection.selected.map((el) => el.id);
+    this.store.dispatch(new ShoppingListActions.DeleteIngredients(idsToDelete));
   }
 }

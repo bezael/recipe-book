@@ -10,6 +10,7 @@ export const START_EDIT = 'START_EDIT';
 export const STOP_EDIT = 'STOP_EDIT';
 export const FETCH_SHOPPING_LIST = 'FETCH_SHOPPING_LIST';
 export const SET_SHOPPING_LIST = 'UPDATE_SHOPPING_LIST';
+export const DELETE_INGREDIENTS = 'DELETE_INGREDIENTS';
 
 export class AddIngredient implements Action {
   readonly type = ADD_INGREDIENT;
@@ -50,6 +51,11 @@ export class SetShoppingList implements Action {
   constructor(public payload: Ingredient[]) {}
 }
 
+export class DeleteIngredients implements Action {
+  readonly type = DELETE_INGREDIENTS;
+  constructor(public payload: string[]) {}
+}
+
 export type ShoppingListActions =
   AddIngredient |
   AddIngredients |
@@ -58,4 +64,5 @@ export type ShoppingListActions =
   StartEdit |
   StopEdit |
   FetchShoppingList |
-  SetShoppingList;
+  SetShoppingList |
+  DeleteIngredients;
