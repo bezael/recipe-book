@@ -22,6 +22,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   editMode = false;
   editedItem: Ingredient;
+  isFormVisible = false;
 
   constructor(private store: Store<fromApp.AppState>) { }
 
@@ -31,7 +32,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         data => {
           if (data.editedIngredientIndex > -1) {
             this.editedItem = data.editedIngredient;
+            console.log(this.editMode);
             this.editMode = true;
+            this.isFormVisible = true;
             this.slForm.setValue({
               name: this.editedItem.name,
               amount: this.editedItem.amount
@@ -70,4 +73,13 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  showAddForm() {
+    this.isFormVisible = true;
+    this.editMode = false;
+    this.slForm.reset();
+  }
+
+  closeForm() {
+    this.isFormVisible = false;
+  }
 }

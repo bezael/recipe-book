@@ -1,1 +1,60 @@
-<h2>Welcome to the Recipe Book</h2>
+<div *ngIf="(authState | async).authenticated">
+  <h2>Welcome to the Recipe Book</h2>
+  <p>You are logged in!</p>
+</div>
+<div *ngIf="!(authState | async).authenticated">
+  <mat-grid-list cols="1" rowHeight="5em">
+    <mat-grid-tile>Already have an account ?</mat-grid-tile>
+    <mat-grid-tile
+      ><button
+        style="min-width: 50%; min-height: 70%;"
+        color="primary"
+        mat-raised-button
+        (click)="toggleSignInForm()"
+      >
+        Sign In
+      </button></mat-grid-tile
+    >
+    <mat-grid-tile *ngIf="signInFormOpened">
+      <button
+        style="min-width: 20%; min-height: 70%;"
+        color="accent"
+        mat-raised-button
+        routerLink="/signin"
+      >
+        <mat-icon>email</mat-icon> Sign In with Email
+      </button>
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="signInFormOpened">
+      <button
+        style="min-width: 20%; min-height: 70%; max-height: 100%;"
+        color="accent"
+        mat-raised-button
+        routerLink="/signin"
+      >
+        Sign In with Facebook
+      </button>
+    </mat-grid-tile>
+    <mat-grid-tile>Don't have an account yet ? </mat-grid-tile>
+    <mat-grid-tile
+      ><button
+        style="min-width: 50%; min-height: 70%;"
+        color="primary"
+        mat-raised-button
+        (click)="toggleSignUpForm()"
+      >
+        Sign Up
+      </button></mat-grid-tile
+    >
+    <mat-grid-tile *ngIf="signUpFormOpened">
+      <button
+        style="min-width: 20%; min-height: 70%;"
+        color="accent"
+        mat-raised-button
+        routerLink="/signup"
+      >
+        <mat-icon>email</mat-icon> Sign Up with Email
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

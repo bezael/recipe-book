@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import * as fromApp from '../../store/app.reducers';
 import * as AuthActions from '../store/auth.actions';
@@ -12,7 +13,7 @@ import * as AuthActions from '../store/auth.actions';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<fromApp.AppState>, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,9 @@ export class SigninComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     this.store.dispatch(new AuthActions.TrySignin({username: email, password: password}));
+  }
+  handleBack() {
+    this.router.navigate(['/']);
   }
 
 }

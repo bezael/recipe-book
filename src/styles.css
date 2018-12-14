@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: url('https://cdn.wallpapersafari.com/83/16/Lc1Vne.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+.logout-icon {
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* fix for material-ui bug */
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: #C2185b;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: #C2185b;
+}
+
+.mat-input-element {
+  color: #000000 !important;
+}

@@ -6,28 +6,33 @@ export interface State {
 }
 
 const initialState: State = {
-  token: null,
-  authenticated: false
+  token: localStorage.getItem('token') || null,
+  authenticated: localStorage.getItem('token') ? true : false
 };
 
-export function authReducer(state = initialState, action: AuthActions.AuthActions) {
+export function authReducer(
+  state = initialState,
+  action: AuthActions.AuthActions
+) {
   switch (action.type) {
-    case (AuthActions.SIGNUP):
-    case (AuthActions.SIGNIN):
+    case AuthActions.SIGNUP:
+    case AuthActions.SIGNIN:
       return {
         ...state,
         authenticated: true
       };
-    case (AuthActions.LOGOUT):
+    case AuthActions.LOGOUT:
+      localStorage.removeItem('token');
       return {
         ...state,
         token: null,
         authenticated: false
       };
-    case (AuthActions.SET_TOKEN):
+    case AuthActions.SET_TOKEN:
+      localStorage.setItem('token', action.payload);
       return {
         ...state,
-        token: action.payload
+        authenticated: true
       };
     default:
       return state;
